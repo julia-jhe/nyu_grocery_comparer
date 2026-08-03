@@ -17,7 +17,7 @@ NYU students who purchase groceries around the Washington Square campus.
     - Run as a console-based Python program
 
 ## Data
-Prices for the First version will be collected manually (including both online and offline sources) and labeled by store, package size, brand, price type, source, and collection date. Note: brand is recorded but does not affect ranking, but it can be shown if the user wishes to. Products are compared when they satisfy the same basic specifications. 
+Prices for the First version will be collected manually (including both online and offline sources). Each product will be recorded by product name/type, store name, package size, brand, price type, collection date, and collection source.
 
 ## Status
 Initial planning and data collection. No functioning code has been written yet.
