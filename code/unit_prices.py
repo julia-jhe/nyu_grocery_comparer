@@ -5,7 +5,8 @@ rows = []
 with open ('data/processed/grocery_prices_clean.csv', newline="") as file:
     reader = csv.DictReader(file)
 
-    fieldnames = reader.fieldnames + ['price_per_oz']
+    fieldnames = reader.fieldnames.copy()
+    fieldnames.insert(6, "price_per_oz")
 
     for row in reader:
         row["package_size"] = float(row["package_size"])
