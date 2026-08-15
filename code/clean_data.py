@@ -15,7 +15,7 @@ with open('data/raw/grocery_prices.csv', newline="") as file:
     with open ('data/processed/grocery_prices_clean.csv', 'w', newline="") as new_file:
         
         fieldnames = reader.fieldnames
-        writer = csv.DictWriter(new_file, fieldnames=fieldnames, delimiter='\t')
+        writer = csv.DictWriter(new_file, fieldnames=fieldnames)
 
         writer.writeheader()
 
