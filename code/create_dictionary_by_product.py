@@ -24,11 +24,26 @@ with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
     products['pasta sauce'] = sauce_list
     products['black beans'] = beans_list
 
-    for product, rows in products.items():
-        min_price = 1
-        for row in rows:
-            if float(row['price_per_oz']) < min_price:
-                min_price = float(row['price_per_oz'])
-                cheapest_row = row
 
-        print(f"The store with the lowest unit price for {cheapest_row['product_type']} is {cheapest_row['store_name']}, with a regular price of {cheapest_row['regular_price']}, package size of {cheapest_row['package_size']} {cheapest_row['unit']}, and a unit price of {cheapest_row['price_per_oz']}")
+    user_product = input("Which product do you wish to look up today?: ")
+
+    for product, rows in products.items():
+        if product == user_product:
+            min_price = 1
+            for row in rows:
+                if float(row['price_per_oz']) < min_price:
+                        min_price = float(row['price_per_oz'])
+                        cheapest_row = row
+
+    print(f"The store with the lowest unit price for {user_product} is {cheapest_row['store_name']}, with a regular price of {cheapest_row['regular_price']}, package size of {cheapest_row['package_size']} {cheapest_row['unit']}, and a unit price of {cheapest_row['price_per_oz']}")
+
+
+    additional_info = input("Do you wish to see additional product information?: ")
+
+    if additional_info == 'Yes':
+        if cheapest_row['notes'] == '':
+            print(f"Product details: {cheapest_row['product_details']}. Brand: {cheapest_row['brand']}. Store location: {cheapest_row['store_location']}. Notes: none")
+        else:
+            print(f"Product details: {cheapest_row['product_details']}. Brand: {cheapest_row['brand']}. Store location: {cheapest_row['store_location']}. Notes: {cheapest_row['notes']}")
+    else:
+        print('Thank you for using this service. Have a nice day.')
