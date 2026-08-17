@@ -25,7 +25,8 @@ with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
     products['black beans'] = beans_list
 
     for product, rows in products.items():
-        prices = []
+        min_price = 1
         for row in rows:
-            prices.append(row["price_per_oz"])
-        print(min(prices))
+            if float(row['price_per_oz']) < min_price:
+                min_price = float(row['price_per_oz'])
+                print(row['store_name'])
