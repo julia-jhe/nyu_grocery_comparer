@@ -24,4 +24,10 @@ with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
     dict['pasta sauce'] = sauce_list
     dict['black beans'] = beans_list
 
-    print(dict)
+    for product, list in dict.items():
+        print(product)
+
+        for row in list:
+            print(row)
+
+        print()       #blank line for formatting
