@@ -38,9 +38,9 @@ with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
     print(f"The store with the lowest unit price for {user_product} is {cheapest_row['store_name']}, with a regular price of {cheapest_row['regular_price']}, package size of {cheapest_row['package_size']} {cheapest_row['unit']}, and a unit price of {cheapest_row['price_per_oz']}")
 
 
-    additional_info = input("Do you wish to see additional product information?: ")
+    additional_info = input("Do you wish to see additional information about this product at this store?: ")
 
-    if additional_info == 'Yes':
+    if additional_info.lower() == 'yes':
         if cheapest_row['notes'] == '':
             print(f"Product details: {cheapest_row['product_details']}. Brand: {cheapest_row['brand']}. Store location: {cheapest_row['store_location']}. Notes: none")
         else:
