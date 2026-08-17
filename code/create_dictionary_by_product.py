@@ -29,4 +29,6 @@ with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
         for row in rows:
             if float(row['price_per_oz']) < min_price:
                 min_price = float(row['price_per_oz'])
-                print(row['store_name'])
+                cheapest_row = row
+
+        print(f"The store with the lowest unit price for {cheapest_row['product_type']} is {cheapest_row['store_name']}, with a regular price of {cheapest_row['regular_price']}, package size of {cheapest_row['package_size']} {cheapest_row['unit']}, and a unit price of {cheapest_row['price_per_oz']}")
