@@ -6,7 +6,7 @@ import csv
 with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
     reader = csv.DictReader(file)
 
-    dict = {}
+    products = {}
 
     pasta_list = []
     sauce_list = []
@@ -20,14 +20,12 @@ with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
         elif row['product_type'] == 'black beans':
             beans_list.append(row)
 
-    dict['pasta'] = pasta_list
-    dict['pasta sauce'] = sauce_list
-    dict['black beans'] = beans_list
+    products['pasta'] = pasta_list
+    products['pasta sauce'] = sauce_list
+    products['black beans'] = beans_list
 
-    for product, list in dict.items():
-        print(product)
-
-        for row in list:
-            print(row)
-
-        print()       #blank line for formatting
+    for product, rows in products.items():
+        prices = []
+        for row in rows:
+            prices.append(row["price_per_oz"])
+        print(min(prices))
