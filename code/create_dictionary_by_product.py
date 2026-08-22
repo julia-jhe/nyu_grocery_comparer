@@ -2,6 +2,7 @@
 #and those lists contain row dictionaries
 
 import csv
+import sys
 
 with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
     reader = csv.DictReader(file)
@@ -11,14 +12,18 @@ with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
     pasta_list = []
     sauce_list = []
     beans_list = []
+    products_list = []
 
     for row in reader:
         if row['product_type'] == 'pasta':
             pasta_list.append(row)
+            products_list.append(row['product_type'])
         elif row['product_type'] == 'pasta sauce':
             sauce_list.append(row)
+            products_list.append(row['product_type'])
         elif row['product_type'] == 'black beans':
             beans_list.append(row)
+            products_list.append(row['product_type'])
 
     products['pasta'] = pasta_list
     products['pasta sauce'] = sauce_list
@@ -27,8 +32,12 @@ with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
 
     user_product = input("Which product do you wish to look up today?: ")
 
+    if user_product.lower() not in products_list:
+        print('Sorry')
+        sys.exit()
+
     for product, rows in products.items():
-        if product == user_product:
+        if product == user_product.lower():
             min_price = 1
             for row in rows:
                 if float(row['price_per_oz']) < min_price:
