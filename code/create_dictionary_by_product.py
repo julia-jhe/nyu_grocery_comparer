@@ -33,7 +33,7 @@ with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
     user_product = input("Which product do you wish to look up today?: ")
 
     if user_product.lower() not in products_list:
-        print('Sorry')
+        print('Sorry. The item you wish to look up is not in our database.')
         sys.exit()
 
     for product, rows in products.items():
@@ -44,15 +44,25 @@ with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
                         min_price = float(row['price_per_oz'])
                         cheapest_row = row
 
-    print(f"The store with the lowest unit price for {user_product} is {cheapest_row['store_name']}, with a regular price of {cheapest_row['regular_price']}, package size of {cheapest_row['package_size']} {cheapest_row['unit']}, and a unit price of {cheapest_row['price_per_oz']}")
+    print(f"Product: {user_product}\n"
+          f"Cheapest store: {cheapest_row['store_name']}\n"
+          f"Regular price: ${cheapest_row['regular_price']}\n"
+          f"Package size: {cheapest_row['package_size']} {cheapest_row['unit']}\n"
+          f"Unit price: ${cheapest_row['price_per_oz']}\n")
 
 
     additional_info = input("Do you wish to see additional information about this product at this store?: ")
 
     if additional_info.lower() == 'yes':
         if cheapest_row['notes'] == '':
-            print(f"Product details: {cheapest_row['product_details']}. Brand: {cheapest_row['brand']}. Store location: {cheapest_row['store_location']}. Notes: none")
+            print(f"Product details: {cheapest_row['product_details']}\n"
+                  f"Brand: {cheapest_row['brand']}\n"
+                  f"Store location: {cheapest_row['store_location']}\n"
+                  "Notes: none\n")
         else:
-            print(f"Product details: {cheapest_row['product_details']}. Brand: {cheapest_row['brand']}. Store location: {cheapest_row['store_location']}. Notes: {cheapest_row['notes']}")
+            print(f"Product details: {cheapest_row['product_details']}\n"
+                  f"Brand: {cheapest_row['brand']}\n"
+                  f"Store location: {cheapest_row['store_location']}\n"
+                  f"Notes: {cheapest_row['notes']}\n")
     else:
         print('Thank you for using this service. Have a nice day.')
