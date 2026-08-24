@@ -18,12 +18,12 @@ NYU students who purchase groceries around the Washington Square campus.
 
 ## v1.0.0 Scope
 
-    - Includes three grocery stores near campus
-    - Includes three common products from each store
-    - Uses manually collected price data
-    - Compares unit prices by product
-    - Identifies the store with the lowest unit price for each product
-    - Runs as a console-based Python program using CSV data
+- Includes three grocery stores near campus
+- Includes three common products from each store
+- Uses manually collected price data
+- Compares unit prices by product
+- Identifies the store with the lowest unit price for each product
+- Runs as a console-based Python program using CSV data
 
 
 ## Data

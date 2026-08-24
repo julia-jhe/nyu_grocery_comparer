@@ -11,7 +11,6 @@ with open ('data/processed/grocery_prices_clean.csv', newline="") as file:
     for row in reader:
         row["package_size"] = float(row["package_size"])
         row["regular_price"] = float(row["regular_price"])
-
         row["price_per_oz"] = float(round(row["regular_price"] / row["package_size"], 2))
 
         rows.append(row)
