@@ -43,11 +43,3 @@ For each product at each store, the item with the lowest regular price that meet
 ### Google Sheets
 
 Each row represents one specific product at one store.
-
-
-## Future Improvements
-
-- Allow users to enter membership status and compare membership prices. 
-- Up-to-date prices with regular updates. 
-- Allow more products and product-specific classifications. 
-- Compare online versus in-store prices. 
