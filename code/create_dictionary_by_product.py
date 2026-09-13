@@ -31,7 +31,7 @@ with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
 
 #calculate basket totals and compare
 
-    user_product = input("Which product do you wish to look up today?: ")
+    user_product = input("Which product(s) do you wish to look up today?: ")
     user_product_list = []
 
     for product in user_product.lower().split(','):
@@ -52,26 +52,24 @@ with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
                     min_price = float(row['price_per_oz'])
                     cheapest_row = row
             return cheapest_row
-            # cheapest_regular_price = cheapest_row['regular_price']
-            # return cheapest_regular_price
-            # cheapest_store = cheapest_row['store_name']
 
+    
     total_price = 0
 
     for product in user_product_list:
         cheapest = calculate_min_price(product)
         total_price += float(cheapest['regular_price'])
         cheapest_store = cheapest['store_name']
-        print(f'the cheapest store for {product} is {cheapest_store}')
+        cheapest_price = cheapest['regular_price']
+        print(f'the cheapest store for {product} is {cheapest_store}, with a regular price of ${cheapest_price}')
 
-    print(f'the total price for this basket is {total_price}')
-
+    print(f'the total price for this basket is ${total_price}')
 
 
 
     # additional_info = input("Do you wish to see additional information about this product at this store?: ")
 
-    # if additional_info.lower() == 'yes':
+    # if additional_info.lower().strip() == 'yes':
     #     if cheapest_row['notes'] == '':
     #         print(f"Product details: {cheapest_row['product_details']}\n"
     #               f"Brand: {cheapest_row['brand']}\n"
