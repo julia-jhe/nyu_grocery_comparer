@@ -61,33 +61,32 @@ with open ("data/processed/grocery_prices_unit_prices.csv", newline="") as file:
         total_price += float(cheapest['regular_price'])
         cheapest_store = cheapest['store_name']
         cheapest_price = cheapest['regular_price']
+        print()
         print(f'the cheapest store for {product} is {cheapest_store}, with a regular price of ${cheapest_price}')
 
+    print()
     print(f'the total price for this basket is ${total_price}')
 
 
+#additional information
 
-    # additional_info = input("Do you wish to see additional information about this product at this store?: ")
+    print()
+    additional_info = input("Do you wish to see additional information about this product at this store?: ")
 
-    # if additional_info.lower().strip() == 'yes':
-    #     if cheapest_row['notes'] == '':
-    #         print(f"Product details: {cheapest_row['product_details']}\n"
-    #               f"Brand: {cheapest_row['brand']}\n"
-    #               f"Store location: {cheapest_row['store_location']}\n"
-    #               "Notes: none\n")
-    #     else:
-    #         print(f"Product details: {cheapest_row['product_details']}\n"
-    #               f"Brand: {cheapest_row['brand']}\n"
-    #               f"Store location: {cheapest_row['store_location']}\n"
-    #               f"Notes: {cheapest_row['notes']}\n")
-    # else:
-    #     print('Thank you for using this service. Have a nice day.')
-
-
-
-
-    # print(f"Product: {user_product}\n"
-    #             f"Cheapest store: {cheapest_row['store_name']}\n"
-    #             f"Regular price: ${cheapest_row['regular_price']}\n"
-    #             f"Package size: {cheapest_row['package_size']} {cheapest_row['unit']}\n"
-    #             f"Unit price: ${cheapest_row['price_per_oz']}\n")
+    if additional_info.lower().strip() == 'yes':
+        for product in user_product_list:
+            cheapest = calculate_min_price(product)
+            if cheapest['notes'] == '':
+                print()
+                print(f"Product name: {cheapest['product_type']}\n"
+                    f"Product details: {cheapest['product_details']}\n"
+                    f"Brand: {cheapest['brand']}\n"
+                    f"Store location: {cheapest['store_location']}\n"
+                    "Notes: none\n")
+            else:
+                print(f"Product details: {cheapest['product_details']}\n"
+                    f"Brand: {cheapest['brand']}\n"
+                    f"Store location: {cheapest['store_location']}\n"
+                    f"Notes: {cheapest['notes']}\n")
+    else:
+        print('Thank you for using this service. Have a nice day.')
